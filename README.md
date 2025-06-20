@@ -81,7 +81,6 @@ An LFI-based exploitation of a vulnerable `?page=` parameter to access sensitive
 📝 [Read full write-up on Medium](https://medium.com/@rahaliashraf732/tryhackme-lofi-room-writeup-exploiting-lfi-vulnerability-ca349aec9d17)  
 [![Read on Medium](https://img.shields.io/badge/Read_on-Medium-black?logo=medium)](https://medium.com/@rahaliashraf732/tryhackme-lofi-room-writeup-exploiting-lfi-vulnerability-ca349aec9d17)
 
----
 
 #### 📌 Topics covered:
 - Local File Inclusion (LFI)
@@ -89,7 +88,6 @@ An LFI-based exploitation of a vulnerable `?page=` parameter to access sensitive
 - Web Enumeration
 - Flag Extraction
 
----
 
 #### 🛠️ Exploitation Steps:
 - Ran `nmap` to identify open ports (SSH & HTTP).
@@ -98,13 +96,6 @@ An LFI-based exploitation of a vulnerable `?page=` parameter to access sensitive
 - Tested LFI with `?page=../../../../etc/passwd` → success.
 - Retrieved the flag via `?page=../../../../flag.txt`.
 
----
-
-#### 🧪 Payload Used:
--?page=../../../../etc/passwd
--?page=../../../../flag.txt
-
----
 
 #### 🛡️ Lessons Learned:
 - Always check URL parameters for possible LFI.
