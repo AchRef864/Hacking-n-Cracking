@@ -74,6 +74,45 @@ An XSS-based exploitation of a vulnerable feedback form to exfiltrate a protecte
 
 ---
 
+### 📌 LoFi Room – TryHackMe
+
+An LFI-based exploitation of a vulnerable `?page=` parameter to access sensitive files on the system and retrieve the flag.
+
+📝 [Read full write-up on Medium](https://medium.com/@rahaliashraf732/tryhackme-lofi-room-writeup-exploiting-lfi-vulnerability-ca349aec9d17)  
+[![Read on Medium](https://img.shields.io/badge/Read_on-Medium-black?logo=medium)](https://medium.com/@rahaliashraf732/tryhackme-lofi-room-writeup-exploiting-lfi-vulnerability-ca349aec9d17)
+
+---
+
+#### 📌 Topics covered:
+- Local File Inclusion (LFI)
+- Directory Traversal
+- Web Enumeration
+- Flag Extraction
+
+---
+
+#### 🛠️ Exploitation Steps:
+- Ran `nmap` to identify open ports (SSH & HTTP).
+- Used `gobuster` to enumerate hidden directories (no useful results).
+- Identified dynamic file inclusion through `?page=chill.php`.
+- Tested LFI with `?page=../../../../etc/passwd` → success.
+- Retrieved the flag via `?page=../../../../flag.txt`.
+
+---
+
+#### 🧪 Payload Used:
+-?page=../../../../etc/passwd
+-?page=../../../../flag.txt
+
+---
+
+#### 🛡️ Lessons Learned:
+- Always check URL parameters for possible LFI.
+- Directory traversal is a simple yet powerful technique.
+- LFI can expose critical system files and sensitive information if unvalidated.
+
+---
+
 ## 🔜 Coming Soon
 
 I’ll be adding more CTF rooms, reverse engineering challenges, and crackmes, such as:
